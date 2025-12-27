@@ -55,6 +55,11 @@ objects = [
 
 session.add_all(objects)
 
-session.commit()
+try:
+  session.commit()
+  logging.info("Data successfully written to the database.")
+except Exception as e:
+  logging.error(f"An error occurred during data transfer: {e}")
 
-print("Data inserted successfully!")
+
+
