@@ -1,43 +1,60 @@
-# Excel to SQL Automation Bot
+# Excel-to-SQL Trade ETL Automation
 
-## Project Objective
+This repository contains a Python-based automation tool designed to streamline the ETL (Extract, Transform, Load) process for financial trade logs. It converts raw, unstructured Excel data into a structured SQLite database using a robust ORM mapping.
 
-This project automates the extraction, transformation, and loading (ETL) of trade data from Excel files into a SQLite database. It ensures data consistency, removes incomplete records, and converts columns to appropriate data types for downstream analysis or reporting.
+# 📌 Problem & Solution
+Manual entry of trade data from Excel to databases is time-consuming and prone to human error, which can lead to inaccurate P&L reporting and financial risk.
 
-## Technologies Used
+This automation bot:
 
-**Python:** Core programming language for data processing.
+Eliminates manual data manipulation by automating the reshaping of Excel spreadsheets.
 
-**Pandas:** For data cleaning, manipulation, and type conversion.
+Enforces data integrity through automated type conversion (trade_id, quantity, price, trade_date).
 
-**SQLAlchemy:** For ORM-based database interaction.
+Cleans the dataset by identifying and removing incomplete or null records.
 
-**SQLite:** Lightweight database to store trade records.
+Provides real-time execution feedback via structured logging.
 
-**Logging:** To track data processing steps and potential issues.
+# 🛠 Tech Stack
+**Python:** Core logic and automation.
 
-## How to Run
+**Pandas:** Data manipulation and cleaning.
 
-1. Place your trade Excel file in the data/ folder.
+**SQLAlchemy (ORM):** Database schema management and secure data insertion.
 
-2. Ensure the required Python libraries are installed:
+**SQLite:** Lightweight relational database storage.
 
+**Logging:** Monitoring execution flow and identifying data gaps.
+
+# ⚙️ Core Automation Workflow
+Ingestion: Reads raw trades.xlsx from the /data directory.
+
+Transformation: Transposes and reshapes the DataFrame to match the database schema.
+
+Validation: Checks for null values and enforces numeric/datetime formats.
+
+Loading: Maps data to a Stock ORM model and commits it to a SQL database.
+
+# 📊 Example Output
+When the script is executed, it provides structured feedback on the ETL process:
+
+```bash
+INFO:root:Rows before cleanup: 2, after cleanup: 2
+INFO:root:Data successfully written to the database.
+INFO:root:2 rows successfully written to the database.
+```
+
+# 🚀 How to Run
+1. Place your trade file in data/trades.xlsx.
+
+2. Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+3. Run the automation:
 
-3. Run the script:
-
+```bash
 python src/exceltosqlbot.py
-
-
-4. Check the trades.db SQLite database for successfully inserted trade records.
-
-## Why This Is Valuable for a Hedge Fund
-
-- Ensures accurate and clean trade records for analysis.
-
-- Provides a reliable ETL pipeline to automate repetitive data tasks.
-
-- Enables fast querying and data validation before further financial modeling.
-
-- Reduces human error in data entry and processing.
+```
