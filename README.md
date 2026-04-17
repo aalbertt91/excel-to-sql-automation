@@ -27,13 +27,13 @@ Provides real-time execution feedback via structured logging.
 **Logging:** Monitoring execution flow and identifying data gaps.
 
 # ⚙️ Core Automation Workflow
-Ingestion: Reads raw trades.xlsx from the /data directory.
+**Ingestion:** Reads raw trades.xlsx from the /data directory.
 
-Transformation: Transposes and reshapes the DataFrame to match the database schema.
+**Transformation:** Transposes and reshapes the DataFrame to match the database schema.
 
-Validation: Checks for null values and enforces numeric/datetime formats.
+**Validation:** Checks for null values and enforces numeric/datetime formats.
 
-Loading: Maps data to a Stock ORM model and commits it to a SQL database.
+**Loading:** Maps data to a Stock ORM model and commits it to a SQL database.
 
 # 📊 Example Output
 When the script is executed, it provides structured feedback on the ETL process:
@@ -45,7 +45,7 @@ INFO:root:2 rows successfully written to the database.
 ```
 
 # 🚀 How to Run
-1. Place your trade file in data/trades.xlsx.
+1. Place your trade file in data/.
 
 2. Install dependencies:
 
